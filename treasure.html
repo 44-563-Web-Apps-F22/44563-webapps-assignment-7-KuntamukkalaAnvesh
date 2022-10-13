@@ -15,6 +15,7 @@
   </head>
   <body>
     <h2> Treasure hunt Anvesh</h2><br>
+
     <div class="container">
 
         <div class="row menu">
@@ -23,6 +24,10 @@
             <div id="score" class="col-sm text-dark row-item bg-warning score">Score is unknown.</div>\
             <div id="help" class="col-sm text-warning row-item bg-danger help">Help report.</div>
         </div><br>
+        <div class="container text-center">
+            <button class="btn btn-danger" type="submit" onclick="resetGame()">Reset</button>
+        </div>
+        <br>
         <div class="container">
             <div class="row">
                 <div class="col-sm"><img src="chest.jpg" alt="chest" class="img-fluid" height="100" width="100" id="chest0" onclick="check(0)"></div>
@@ -47,7 +52,7 @@
             <div class="row">
                 <div class="col-sm"><img src="chest.jpg" alt="chest" class="img-fluid" height="100" width="100" id="chest10" onclick="check(10)"></div>
                 <div class="col-sm"><img src="chest.jpg" alt="chest" class="img-fluid" height="100" width="100" id="chest11" onclick="check(11)"></div>
-                <div class="col-sm"><img src="Help.jpg" alt="chest" class="img-fluid" height="100" width="100" id="help" onclick="help())"></div>
+                <div class="col-sm"><img src="Help.jpg" alt="chest" class="img-fluid" height="100" width="100" id="help" onclick="help()"></div>
                 <div class="col-sm"><img src="chest.jpg" alt="chest" class="img-fluid" height="100" width="100" id="chest13" onclick="check(13)"></div>
                 <div class="col-sm"><img src="chest.jpg" alt="chest" class="img-fluid" height="100" width="100" id="chest14" onclick="check(14)"></div>
             </div><br>
@@ -145,8 +150,28 @@
                     document.getElementById("help").innerHTML = "Sorry, no help available"
                 }
             }
-               
-            </script>
-            </body>
+            function resetGame() {
+
+                 treasureLocation = Math.floor(Math.random() * 24)
+
+                 while(treasureLocation == 12) 
+{
+    treasureLocation = Math.floor(Math.random() * 24)
+}
+
+                  chestCount = 0
+                score = 0
+                document.getElementById("chests").innerHTML = "Number of chests checked is zero"
+                document.getElementById("score").innerHTML = "Score is unknown"
+                document.getElementById("help").innerHTML = "Help report"
+                 for(let i = 0; i < 24; i++) {
+        if(i != 12) {
+        document.getElementById(ids[i]).src = "coins.jpg"
+       }
+   }
+}   
+
+         </script>
+    </body>
 </html>
        
